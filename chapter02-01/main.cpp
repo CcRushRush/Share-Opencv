@@ -14,7 +14,7 @@ using namespace std;
 void drawCross(Mat img,CvPoint point,CvScalar color,int size, int thickness){
     line(img,cvPoint(point.x-size/2,point.y),cvPoint(point.x+size/2,point.y),color,thickness,8,0);
     line(img,cvPoint(point.x,point.y-size/2),cvPoint(point.x,point.y+size/2),color,thickness,8,0);
-
+    return;
 }
 int main( ) {
     VideoCapture capture(0);
