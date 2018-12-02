@@ -4,7 +4,7 @@ project(chapter01)
 set(CMAKE_CXX_STANDARD 14)
 
 #add_executable(chapter01 main.cpp)
-add_executable(Share-Opencv chapter02-02/main.cpp)
+add_executable(Share-Opencv chapter03-01/main.cpp chapter03-01/main.cpp)
 
 #查找Qt的库
 find_package(Qt5Widgets)

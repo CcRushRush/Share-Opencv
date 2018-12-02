@@ -3,12 +3,7 @@
 #include<unistd.h>
 #include <iostream>
 #include <string>
-//! [includes]
-
-//! [namespace]
 using namespace cv;
-//! [namespace]
-
 using namespace std;
 //中心标记十字
 void drawCross(Mat img,CvPoint point,CvScalar color,int size, int thickness){
@@ -22,11 +17,9 @@ int main( ) {
     CvPoint point;
     struct  timeval start;
     struct  timeval end;
-
     unsigned long diff;
     gettimeofday(&start,NULL);
     while(1) {
-
         gettimeofday(&end,NULL);
         diff = (end.tv_sec-start.tv_sec)+ end.tv_usec-start.tv_usec;
         gettimeofday(&start,NULL);
@@ -37,11 +30,7 @@ int main( ) {
             printf("--(!) No captured frame -- Break!"); //break;
         } else {
             cvtColor(frame, edges, CV_BGR2GRAY);//彩色转换成灰度
-//            blur(edges, edges, Size(7, 7));//模糊化
-//            Canny(edges, edges, 0, 30, 3);//边缘化
-
             point = Point(frame.cols/2,frame.rows/2);
-
             circle(frame,point,25,Scalar(0,255,255),2 );
             circle(edges,point,25,Scalar(0,255,255),2 );
             drawCross(frame,point,Scalar(0,0,255),20,2);

@@ -6,8 +6,6 @@ using namespace std;
 Mat src;
 vector<Point2f> src_corners;
 vector<Point2f> dst_corners;
-
-
 int i=0;
 void mouseHandler(int event, int x, int y, int flags, void* data_ptr)
 {
@@ -19,13 +17,9 @@ void mouseHandler(int event, int x, int y, int flags, void* data_ptr)
         {
             i++;
             dst_corners.emplace_back(x,y);
-            cout << x << y << endl;
         }
     }
-
 }
-
-
 int main(int argc, char** argv) {
     // load images
     src = imread("../images/billboard.png");
@@ -38,17 +32,14 @@ int main(int argc, char** argv) {
     imshow("input image", src);
     Mat replaceImg = imread("../images/lenna.jpg");
     imshow("adv content", replaceImg);    // 定义两个平面上四个角坐标
-
     // 原图像平面四点坐标
     src_corners.emplace_back(0, 0);
     src_corners.emplace_back(replaceImg.cols, 0);
     src_corners.emplace_back(0, replaceImg.rows);
     src_corners.emplace_back(replaceImg.cols, replaceImg.rows);
-
     // 目标平面四个角坐标
     setMouseCallback("input image", mouseHandler);
     waitKey(0);
-
     Mat h = findHomography(src_corners, dst_corners);
     Mat output_img;
     warpPerspective(replaceImg, output_img, h, src.size());// create mask
